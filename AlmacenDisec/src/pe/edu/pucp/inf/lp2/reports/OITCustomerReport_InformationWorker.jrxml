@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fe381ed0-5014-4b1a-b62f-7a2981968ed9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     WORKER.`name_worker` AS WORKER_name_worker,
+     WORKER.`last_name` AS WORKER_last_name,
+     WORKER.`second_last_name` AS WORKER_second_last_name,
+     WORKER.`email_worker` AS WORKER_email_worker,
+     WORKER.`code_worker` AS WORKER_code_worker
+FROM
+     `CUSTOMER` CUSTOMER INNER JOIN `WORK_ORDER` WORK_ORDER ON CUSTOMER.`id_customer` = WORK_ORDER.`id_customer`
+     INNER JOIN `WORKER` WORKER ON WORK_ORDER.`id_worker` = WORKER.`id_worker`]]>
+	</queryString>
+	<field name="WORKER_name_worker" class="java.lang.String"/>
+	<field name="WORKER_last_name" class="java.lang.String"/>
+	<field name="WORKER_second_last_name" class="java.lang.String"/>
+	<field name="WORKER_email_worker" class="java.lang.String"/>
+	<field name="WORKER_code_worker" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="46" y="16" width="199" height="20" uuid="5450167f-c277-4e96-bb33-7f070cad5086"/>
+				<text><![CDATA[INFORMACIÓN DEL TÉCNICO A CARGO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="46" y="8" width="87" height="20" uuid="9e9a75dc-4004-45e1-a9ae-70979b59984c"/>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="8" width="90" height="20" uuid="576d7383-7766-44d4-8e45-2b4ba5a46e5e"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="8" width="110" height="20" uuid="966b67ed-2f11-447d-a039-1d0dfcdd279d"/>
+				<text><![CDATA[APELLIDO PATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="8" width="111" height="20" uuid="3c7b5272-22a2-46db-a0f4-2db5e14b2843"/>
+				<text><![CDATA[APELLIDO MATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="8" width="100" height="20" uuid="1936fff5-6a69-4ea5-9cc4-fce24ddc1691"/>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="16" width="87" height="20" uuid="29288f49-3fc6-4931-84e2-713e80226b39"/>
+				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="133" y="16" width="100" height="20" uuid="960c85fb-8c9f-46ea-967a-4babe9b27f54"/>
+				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="16" width="100" height="20" uuid="4b8931bf-e62b-48ed-bcd6-6c318a552cf9"/>
+				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="16" width="100" height="20" uuid="d36cc363-fbb4-4990-a27d-0c7681c42773"/>
+				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="16" width="100" height="20" uuid="386f3036-4086-42a0-bfbc-852357572bd7"/>
+				<textFieldExpression><![CDATA[$F{WORKER_email_worker}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package almacendisec;
+package pe.edu.pucp.inf.lp2.view;
 
 /**
  *
  * @author Victor Alonso Vergara 20141826
  */
-public class AlmacenDisec {
+public class Program {
 
     /**
      * @param args the command line arguments
