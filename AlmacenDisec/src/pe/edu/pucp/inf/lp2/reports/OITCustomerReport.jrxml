@@ -59,7 +59,7 @@ WHERE CUSTOMER.code_customer = $P{CODIGOCLIENTE}]]>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_name_customer}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="20" y="30" width="200" height="100" uuid="681ecc99-783a-42d7-bf9d-632eb83a5a8b"/>
+				<reportElement x="41" y="30" width="200" height="100" uuid="681ecc99-783a-42d7-bf9d-632eb83a5a8b"/>
 				<subreportParameter name="SUBREPORT_DIR"/>
 				<subreportParameter name="CODIGOCLIENTE"/>
 				<subreportParameter name="FECHAINICIO"/>

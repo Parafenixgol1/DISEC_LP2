@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker_InformationWorkOrder" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8bbb278-36bc-4c2e-8b90-0ced7db7c57b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker_InformationWorkOrder" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8bbb278-36bc-4c2e-8b90-0ced7db7c57b">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -36,7 +36,7 @@ WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
 	<title>
 		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="16" width="70" height="20" uuid="917ae496-e68b-428d-92fc-363e5e743644"/>
+				<reportElement x="33" y="16" width="70" height="20" uuid="917ae496-e68b-428d-92fc-363e5e743644"/>
 				<text><![CDATA[DATOS OITS]]></text>
 			</staticText>
 		</band>
@@ -47,47 +47,47 @@ WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="6" width="100" height="20" uuid="549b12e9-00a2-4fca-8a5a-769eb8738de3"/>
+				<reportElement x="33" y="6" width="100" height="20" uuid="549b12e9-00a2-4fca-8a5a-769eb8738de3"/>
 				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="146" y="6" width="100" height="20" uuid="967d500f-4a47-4531-9844-9db25c5911ea"/>
+				<reportElement x="133" y="6" width="100" height="20" uuid="967d500f-4a47-4531-9844-9db25c5911ea"/>
 				<text><![CDATA[DESCRIPCIÓN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="246" y="6" width="100" height="20" uuid="7822b8bf-a7c4-47d8-ba00-fb68f84af978"/>
+				<reportElement x="233" y="6" width="100" height="20" uuid="7822b8bf-a7c4-47d8-ba00-fb68f84af978"/>
 				<text><![CDATA[FECHA INICIAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="6" width="100" height="20" uuid="d5d99151-46b6-47c3-85af-56bd81b2e891"/>
+				<reportElement x="333" y="6" width="100" height="20" uuid="d5d99151-46b6-47c3-85af-56bd81b2e891"/>
 				<text><![CDATA[FECHA FINAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="446" y="6" width="100" height="20" uuid="cf56c568-3ba6-4cb5-9904-2eb2c6ad5866"/>
+				<reportElement x="433" y="6" width="100" height="20" uuid="cf56c568-3ba6-4cb5-9904-2eb2c6ad5866"/>
 				<text><![CDATA[ESTADO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="50" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<textField>
-				<reportElement x="46" y="7" width="100" height="20" uuid="7b89d06f-a85d-4ad4-bf40-221626402bc4"/>
+				<reportElement x="33" y="7" width="100" height="20" uuid="7b89d06f-a85d-4ad4-bf40-221626402bc4"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_code_work_order}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="146" y="7" width="100" height="38" uuid="b2268955-641b-4b80-a95c-0cf5804d184f"/>
+				<reportElement x="133" y="7" width="100" height="38" uuid="b2268955-641b-4b80-a95c-0cf5804d184f"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_description_work_order}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="246" y="7" width="100" height="20" uuid="788e3bfe-1236-44af-a96d-1fc7256ce2b1"/>
+				<reportElement x="233" y="7" width="100" height="20" uuid="788e3bfe-1236-44af-a96d-1fc7256ce2b1"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_start_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="346" y="7" width="100" height="20" uuid="53bcc27e-2a48-4181-ba67-fe3dc760a4b8"/>
+				<reportElement x="333" y="7" width="100" height="20" uuid="53bcc27e-2a48-4181-ba67-fe3dc760a4b8"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_final_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="446" y="7" width="100" height="20" uuid="5008530b-908e-4a3f-ad45-f625c36541ea"/>
+				<reportElement x="433" y="7" width="100" height="20" uuid="5008530b-908e-4a3f-ad45-f625c36541ea"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_status_work_order}]]></textFieldExpression>
 			</textField>
 		</band>

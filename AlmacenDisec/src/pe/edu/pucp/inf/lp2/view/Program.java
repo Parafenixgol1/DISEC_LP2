@@ -29,13 +29,32 @@ public class Program {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con= DriverManager.getConnection("jdbc:mysql://sallka.lab.inf.pucp.edu.pe:3306/inf282g5","inf282g5", "Cs0omP");
             
-        JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/inf/lp2/reports/OITCustomerReport.jasper").getFile());
+        JasperReport reporteCustomerReport = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/inf/lp2/reports/OITCustomerReport.jasper").getFile());
+        JasperReport reporteCustomerReport_IW = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/inf/lp2/reports/OITCustomerReport_InformationWorker.jasper").getFile());
+        JasperReport reporteCustomerReport_IW_IWO = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/inf/lp2/reports/OITCustomerReport_InformationWorker_InformationWorkOrder.jasper").getFile());     
         
         HashMap hm = new HashMap();
         String codigo =  JOptionPane.showInputDialog(null,"Ingrese un código de cliente:");
+        String fechaInicial =  JOptionPane.showInputDialog(null,"Para la generación del reporte ingrese una fecha inicial:");
+        String fechaFinal =  JOptionPane.showInputDialog(null,"Ingrese una fecha final:");
         hm.put("CODIGOCLIENTE",codigo);
+        hm.put("FECHAINICIO",fechaInicial);
+        hm.put("FECHAFINAL",fechaFinal);
         
-        JasperPrint impresion = JasperFillManager.fillReport(reporte, hm, con);
+        HashMap hm3 = new HashMap();
+        hm3.put("CODIGOCLIENTE",codigo);
+        hm3.put("FECHAINICIO",fechaInicial);
+        hm3.put("FECHAFINAL",fechaFinal);
+        
+        HashMap hm2 = new HashMap();
+        hm2.put("CODIGOCLIENTE",codigo);
+        hm2.put("FECHAINICIO",fechaInicial);
+        hm2.put("FECHAFINAL",fechaFinal);
+        hm2.put("SUBREPORT_DIR",reporteCustomerReport_IW);
+        
+        hm.put("SUBREPORT_DIR",reporteCustomerReport_IW_IWO);
+        
+        JasperPrint impresion = JasperFillManager.fillReport(reporteCustomerReport, hm, con);
         
         JasperViewer visor = new JasperViewer(impresion);
         
