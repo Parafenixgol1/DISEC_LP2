@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package pe.edu.pucp.inf.lp2.view;
-
+/*
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
@@ -13,8 +13,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
-
+import net.sf.jasperreports.view.JasperViewe*/
 /**
  *
  * @author Victor Alonso Vergara 20141826
@@ -25,7 +24,7 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try{
+    /*    try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con= DriverManager.getConnection("jdbc:mysql://sallka.lab.inf.pucp.edu.pe:3306/inf282g5","inf282g5", "Cs0omP");
             
@@ -64,7 +63,7 @@ public class Program {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-    
+    */
     }
     
 }

@@ -2,7 +2,13 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef334a29-ced9-423a-a73b-f8622969e5c4">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="560"/>
+	<parameter name="Fecha_ inicial" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha_final" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT  sum(WORK_ORDER_LINE.quantity_work_order_line) AS CANTIDAD,
 		ITEM.name_item AS NOMBRE, BRAND.name_brand AS MARCA,
@@ -13,7 +19,7 @@ INNER JOIN ITEM ON WORK_ORDER_LINE.id_item=ITEM.id_item
 INNER JOIN BRAND ON BRAND.id_brand=ITEM.id_brand 
 INNER JOIN TOOL ON ITEM.id_item=TOOL.id_tool
 INNER JOIN WORK_ORDER ON WORK_ORDER_LINE.id_work_order = WORK_ORDER.id_work_order
-WHERE WORK_ORDER.start_date > '2019-01-01'  AND  WORK_ORDER.final_date < '2019-04-30' AND WORK_ORDER.status_work_order =0 
+WHERE WORK_ORDER.start_date > $P{Fecha_ inicial}  AND  WORK_ORDER.final_date <  $P{Fecha_final} AND WORK_ORDER.status_work_order =0 
 group by ITEM.id_item,  WORK_ORDER.description_work_order,WORK_ORDER.start_date,WORK_ORDER.final_date]]>
 	</queryString>
 	<field name="CANTIDAD" class="java.math.BigDecimal"/>
@@ -52,8 +58,8 @@ group by ITEM.id_item,  WORK_ORDER.description_work_order,WORK_ORDER.start_date,
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement positionType="Float" x="0" y="2" width="199" height="63" uuid="c4021507-298a-4a43-bd62-640cdbaed5d1"/>
-				<imageExpression><![CDATA["T:\\Temp\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\logon.jpg"]]></imageExpression>
+				<reportElement positionType="Float" x="0" y="2" width="227" height="66" uuid="1ae97601-09e7-4b3c-a4da-7f0ff6cd070c"/>
+				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -103,12 +109,13 @@ group by ITEM.id_item,  WORK_ORDER.description_work_order,WORK_ORDER.start_date,
 				<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
 			</textField>
 		</band>
+		<band height="17"/>
 	</detail>
 	<columnFooter>
-		<band height="213" splitType="Stretch">
+		<band height="229" splitType="Stretch">
 			<pieChart>
 				<chart>
-					<reportElement x="0" y="0" width="555" height="213" uuid="9f7fdd3f-ea8f-402e-9445-1940b139c457"/>
+					<reportElement x="20" y="0" width="555" height="213" uuid="9f7fdd3f-ea8f-402e-9445-1940b139c457"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
