@@ -1,0 +1,5 @@
+<pe.edu.pucp.almacendisec.config.ConnectionParameters>
+    <url>jdbc:mysql://sallka.lab.inf.pucp.edu.pe:3306/inf282g5</url>
+    <user>inf282g5</user>
+    <password>Cs0omP</password>
+</pe.edu.pucp.almacendisec.config.ConnectionParameters>
