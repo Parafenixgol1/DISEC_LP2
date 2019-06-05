@@ -3,13 +3,18 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\DISEC\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\inf\\lp2\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
      WORKER.`name_worker` AS WORKER_name_worker,
      WORKER.`last_name` AS WORKER_last_name,
      WORKER.`second_last_name` AS WORKER_second_last_name,
      WORKER.`email_worker` AS WORKER_email_worker,
-     WORKER.`code_worker` AS WORKER_code_worker
+     WORKER.`code_worker` AS WORKER_code_worker,
+     WORK_ORDER.`id_worker` AS WORK_ORDER_id_worker,
+     WORKER.`id_worker` AS WORKER_id_worker
 FROM
      `CUSTOMER` CUSTOMER INNER JOIN `WORK_ORDER` WORK_ORDER ON CUSTOMER.`id_customer` = WORK_ORDER.`id_customer`
      INNER JOIN `WORKER` WORKER ON WORK_ORDER.`id_worker` = WORKER.`id_worker`]]>
@@ -19,6 +24,17 @@ FROM
 	<field name="WORKER_second_last_name" class="java.lang.String"/>
 	<field name="WORKER_email_worker" class="java.lang.String"/>
 	<field name="WORKER_code_worker" class="java.lang.String"/>
+	<field name="WORK_ORDER_id_worker" class="java.lang.Integer"/>
+	<field name="WORKER_id_worker" class="java.lang.Integer"/>
+	<group name="TRABAJOS POR TECNICO">
+		<groupExpression><![CDATA[$F{WORK_ORDER_id_worker}]]></groupExpression>
+		<groupHeader>
+			<band height="50"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -36,11 +52,11 @@ FROM
 	<columnHeader>
 		<band height="38" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="8" width="87" height="20" uuid="9e9a75dc-4004-45e1-a9ae-70979b59984c"/>
+				<reportElement x="46" y="8" width="73" height="20" uuid="9e9a75dc-4004-45e1-a9ae-70979b59984c"/>
 				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="133" y="8" width="90" height="20" uuid="576d7383-7766-44d4-8e45-2b4ba5a46e5e"/>
+				<reportElement x="119" y="8" width="104" height="20" uuid="576d7383-7766-44d4-8e45-2b4ba5a46e5e"/>
 				<text><![CDATA[NOMBRE]]></text>
 			</staticText>
 			<staticText>
@@ -58,27 +74,32 @@ FROM
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="50" splitType="Stretch">
+		<band height="192" splitType="Stretch">
 			<textField>
-				<reportElement x="46" y="16" width="87" height="20" uuid="29288f49-3fc6-4931-84e2-713e80226b39"/>
+				<reportElement x="46" y="16" width="73" height="20" uuid="29288f49-3fc6-4931-84e2-713e80226b39"/>
 				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="133" y="16" width="100" height="20" uuid="960c85fb-8c9f-46ea-967a-4babe9b27f54"/>
+				<reportElement x="119" y="16" width="104" height="20" uuid="960c85fb-8c9f-46ea-967a-4babe9b27f54"/>
 				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="233" y="16" width="100" height="20" uuid="4b8931bf-e62b-48ed-bcd6-6c318a552cf9"/>
+				<reportElement x="223" y="16" width="110" height="20" uuid="4b8931bf-e62b-48ed-bcd6-6c318a552cf9"/>
 				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="16" width="100" height="20" uuid="d36cc363-fbb4-4990-a27d-0c7681c42773"/>
+				<reportElement x="333" y="16" width="111" height="20" uuid="d36cc363-fbb4-4990-a27d-0c7681c42773"/>
 				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="16" width="100" height="20" uuid="386f3036-4086-42a0-bfbc-852357572bd7"/>
+				<reportElement x="444" y="16" width="100" height="42" uuid="386f3036-4086-42a0-bfbc-852357572bd7"/>
 				<textFieldExpression><![CDATA[$F{WORKER_email_worker}]]></textFieldExpression>
 			</textField>
+			<subreport>
+				<reportElement x="2" y="63" width="200" height="100" uuid="bd4e214a-1241-4e80-baeb-cdbf5cfecc32"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker_InformationWorkOrder.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

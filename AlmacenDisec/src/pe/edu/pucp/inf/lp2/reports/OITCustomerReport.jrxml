@@ -2,10 +2,13 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="979c7875-b496-4a71-bd85-9ae2a4709800">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="98"/>
+	<property name="ireport.y" value="89"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\DISEC\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\inf\\lp2\\reports\\"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
+	<parameter name="FECHAINICIO" class="java.lang.String"/>
+	<parameter name="FECHAFINAL" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      CUSTOMER.`code_customer` AS CUSTOMER_code_customer,
@@ -35,17 +38,17 @@ FROM
 	<columnHeader>
 		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement x="67" y="2" width="100" height="20" uuid="6805996e-98e5-4ae9-9d91-f9a22b22bf03"/>
-				<text><![CDATA[CODIGO CLIENTE]]></text>
+				<reportElement x="67" y="2" width="111" height="20" uuid="6805996e-98e5-4ae9-9d91-f9a22b22bf03"/>
+				<text><![CDATA[CODIGO DE CLIENTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="256" y="2" width="100" height="20" uuid="578629e8-6ecf-4791-8048-58aa37532123"/>
-				<text><![CDATA[NOMBRE CLIENTE]]></text>
+				<reportElement x="256" y="2" width="112" height="20" uuid="578629e8-6ecf-4791-8048-58aa37532123"/>
+				<text><![CDATA[NOMBRE DE CLIENTE]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="160" splitType="Stretch">
+		<band height="166" splitType="Stretch">
 			<textField>
 				<reportElement x="67" y="16" width="100" height="20" uuid="7f75b597-4716-4ffc-a16f-9dcfb8dccb2f"/>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_code_customer}]]></textFieldExpression>
