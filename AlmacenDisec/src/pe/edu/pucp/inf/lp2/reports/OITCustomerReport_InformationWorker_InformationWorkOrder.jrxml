@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker_InformationWorkOrder" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8bbb278-36bc-4c2e-8b90-0ced7db7c57b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker_InformationWorkOrder" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b8bbb278-36bc-4c2e-8b90-0ced7db7c57b">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
+	<parameter name="FECHAINICIO" class="java.lang.String"/>
+	<parameter name="FECHAFINAL" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      WORK_ORDER.`code_work_order` AS WORK_ORDER_code_work_order,
@@ -13,8 +16,12 @@
      WORK_ORDER.`expected_final_date` AS WORK_ORDER_expected_final_date,
      WORK_ORDER.`expected_start_date` AS WORK_ORDER_expected_start_date
 FROM
-     `CUSTOMER` CUSTOMER, `WORK_ORDER` WORK_ORDER, `WORKER` WORKER
-WHERE CUSTOMER.id_customer = WORK_ORDER.id_customer AND WORK_ORDER.id_worker = WORKER.id_worker]]>
+     `WORK_ORDER` WORK_ORDER, `WORKER` WORKER
+WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
+     `CUSTOMER` CUSTOMER 
+     WHERE CUSTOMER.`code_customer` = $P{CODIGOCLIENTE}) 
+     AND WORK_ORDER.`id_worker` = WORKER.`id_worker`
+     AND ($P{FECHAINICIO} < WORK_ORDER.`start_date` AND $P{FECHAFINAL}> WORK_ORDER.`final_date`)]]>
 	</queryString>
 	<field name="WORK_ORDER_code_work_order" class="java.lang.String"/>
 	<field name="WORK_ORDER_description_work_order" class="java.lang.String"/>
@@ -40,47 +47,47 @@ WHERE CUSTOMER.id_customer = WORK_ORDER.id_customer AND WORK_ORDER.id_worker = W
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="4" width="100" height="20" uuid="3a40deac-5c53-44ba-be72-60904e51288b"/>
+				<reportElement x="46" y="6" width="100" height="20" uuid="549b12e9-00a2-4fca-8a5a-769eb8738de3"/>
 				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="146" y="4" width="100" height="20" uuid="5f605be0-38d3-4202-b60e-1a8116141462"/>
+				<reportElement x="146" y="6" width="100" height="20" uuid="967d500f-4a47-4531-9844-9db25c5911ea"/>
 				<text><![CDATA[DESCRIPCIÓN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="246" y="4" width="100" height="20" uuid="6e6c720d-22c0-447d-9339-244d9f65cd02"/>
-				<text><![CDATA[FECHA INICIO]]></text>
+				<reportElement x="246" y="6" width="100" height="20" uuid="7822b8bf-a7c4-47d8-ba00-fb68f84af978"/>
+				<text><![CDATA[FECHA INICIAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="4" width="100" height="20" uuid="ac67be63-045c-4492-892c-6c8232bdccdd"/>
+				<reportElement x="346" y="6" width="100" height="20" uuid="d5d99151-46b6-47c3-85af-56bd81b2e891"/>
 				<text><![CDATA[FECHA FINAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="446" y="4" width="100" height="20" uuid="04b7e3c2-a9d7-49b8-8f15-8dccb0048030"/>
-				<text><![CDATA[ESTADO OIT]]></text>
+				<reportElement x="446" y="6" width="100" height="20" uuid="cf56c568-3ba6-4cb5-9904-2eb2c6ad5866"/>
+				<text><![CDATA[ESTADO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="48" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<textField>
-				<reportElement x="46" y="12" width="100" height="20" uuid="6d40fe86-d500-49b1-a0d9-ee272b538dbd"/>
+				<reportElement x="46" y="7" width="100" height="20" uuid="7b89d06f-a85d-4ad4-bf40-221626402bc4"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_code_work_order}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="146" y="12" width="100" height="20" uuid="e34b7788-59d6-4fff-8d70-4c2c4f83dcbb"/>
+				<reportElement x="146" y="7" width="100" height="38" uuid="b2268955-641b-4b80-a95c-0cf5804d184f"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_description_work_order}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="246" y="12" width="100" height="20" uuid="290078c1-fe97-4bb0-8ec1-277c343a0c12"/>
+				<reportElement x="246" y="7" width="100" height="20" uuid="788e3bfe-1236-44af-a96d-1fc7256ce2b1"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_start_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="346" y="12" width="100" height="20" uuid="05f6ccd1-5101-4c69-ae91-a32832dffcdd"/>
+				<reportElement x="346" y="7" width="100" height="20" uuid="53bcc27e-2a48-4181-ba67-fe3dc760a4b8"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_final_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="446" y="12" width="100" height="20" uuid="293bfba9-9036-4941-9ad8-12d2d5534f9b"/>
+				<reportElement x="446" y="7" width="100" height="20" uuid="5008530b-908e-4a3f-ad45-f625c36541ea"/>
 				<textFieldExpression><![CDATA[$F{WORK_ORDER_status_work_order}]]></textFieldExpression>
 			</textField>
 		</band>
