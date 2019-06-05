@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
+	<parameter name="FECHAINICIO" class="java.lang.String"/>
+	<parameter name="FECHAFINAL" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\DISEC\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\inf\\lp2\\reports\\"]]></defaultValueExpression>
 	</parameter>
@@ -12,94 +15,88 @@
      WORKER.`last_name` AS WORKER_last_name,
      WORKER.`second_last_name` AS WORKER_second_last_name,
      WORKER.`email_worker` AS WORKER_email_worker,
-     WORKER.`code_worker` AS WORKER_code_worker,
-     WORK_ORDER.`id_worker` AS WORK_ORDER_id_worker,
-     WORKER.`id_worker` AS WORKER_id_worker
+     WORKER.`code_worker` AS WORKER_code_worker
+
 FROM
-     `CUSTOMER` CUSTOMER INNER JOIN `WORK_ORDER` WORK_ORDER ON CUSTOMER.`id_customer` = WORK_ORDER.`id_customer`
-     INNER JOIN `WORKER` WORKER ON WORK_ORDER.`id_worker` = WORKER.`id_worker`]]>
+     `WORK_ORDER` WORK_ORDER, `WORKER` WORKER
+WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
+     `CUSTOMER` CUSTOMER 
+     WHERE CUSTOMER.`code_customer` = $P{CODIGOCLIENTE}) 
+     AND WORK_ORDER.`id_worker` = WORKER.`id_worker`]]>
 	</queryString>
 	<field name="WORKER_name_worker" class="java.lang.String"/>
 	<field name="WORKER_last_name" class="java.lang.String"/>
 	<field name="WORKER_second_last_name" class="java.lang.String"/>
 	<field name="WORKER_email_worker" class="java.lang.String"/>
 	<field name="WORKER_code_worker" class="java.lang.String"/>
-	<field name="WORK_ORDER_id_worker" class="java.lang.Integer"/>
-	<field name="WORKER_id_worker" class="java.lang.Integer"/>
-	<group name="TRABAJOS POR TECNICO">
-		<groupExpression><![CDATA[$F{WORK_ORDER_id_worker}]]></groupExpression>
-		<groupHeader>
-			<band height="50"/>
-		</groupHeader>
-		<groupFooter>
-			<band height="50"/>
-		</groupFooter>
-	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="46" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="16" width="199" height="20" uuid="5450167f-c277-4e96-bb33-7f070cad5086"/>
+				<reportElement x="27" y="9" width="199" height="20" uuid="5450167f-c277-4e96-bb33-7f070cad5086"/>
 				<text><![CDATA[INFORMACIÓN DEL TÉCNICO A CARGO]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="16" splitType="Stretch"/>
+		<band height="9" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="38" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<staticText>
-				<reportElement x="46" y="8" width="73" height="20" uuid="9e9a75dc-4004-45e1-a9ae-70979b59984c"/>
-				<text><![CDATA[CÓDIGO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="119" y="8" width="104" height="20" uuid="576d7383-7766-44d4-8e45-2b4ba5a46e5e"/>
+				<reportElement x="111" y="7" width="100" height="20" uuid="b55a138b-93da-4937-b4b0-d53cc9de93ac"/>
 				<text><![CDATA[NOMBRE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="8" width="110" height="20" uuid="966b67ed-2f11-447d-a039-1d0dfcdd279d"/>
+				<reportElement x="211" y="7" width="110" height="20" uuid="63344aeb-1409-4f64-8851-ea8f258d7b0c"/>
 				<text><![CDATA[APELLIDO PATERNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="333" y="8" width="111" height="20" uuid="3c7b5272-22a2-46db-a0f4-2db5e14b2843"/>
+				<reportElement x="321" y="7" width="110" height="20" uuid="b5efb582-7922-457d-9066-7804386b1855"/>
 				<text><![CDATA[APELLIDO MATERNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="444" y="8" width="100" height="20" uuid="1936fff5-6a69-4ea5-9cc4-fce24ddc1691"/>
+				<reportElement x="431" y="7" width="100" height="20" uuid="5f81438b-f970-4955-b30e-1fb45e017811"/>
 				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="7" width="85" height="20" uuid="1b1329ad-140b-4185-9274-cc61075a2025"/>
+				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="192" splitType="Stretch">
-			<textField>
-				<reportElement x="46" y="16" width="73" height="20" uuid="29288f49-3fc6-4931-84e2-713e80226b39"/>
-				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="119" y="16" width="104" height="20" uuid="960c85fb-8c9f-46ea-967a-4babe9b27f54"/>
-				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="223" y="16" width="110" height="20" uuid="4b8931bf-e62b-48ed-bcd6-6c318a552cf9"/>
-				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="333" y="16" width="111" height="20" uuid="d36cc363-fbb4-4990-a27d-0c7681c42773"/>
-				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="444" y="16" width="100" height="42" uuid="386f3036-4086-42a0-bfbc-852357572bd7"/>
-				<textFieldExpression><![CDATA[$F{WORKER_email_worker}]]></textFieldExpression>
-			</textField>
+		<band height="189" splitType="Stretch">
 			<subreport>
-				<reportElement x="2" y="63" width="200" height="100" uuid="bd4e214a-1241-4e80-baeb-cdbf5cfecc32"/>
+				<reportElement x="25" y="61" width="200" height="100" uuid="f55c08e4-b456-4220-b7ef-4dcf9601c03a"/>
+				<subreportParameter name="CODIGOCLIENTE"/>
+				<subreportParameter name="FECHAINICIO"/>
+				<subreportParameter name="FECHAFINAL"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker_InformationWorkOrder.jasper"]]></subreportExpression>
 			</subreport>
+			<textField>
+				<reportElement x="111" y="13" width="89" height="34" uuid="42e6a600-cff7-416f-896b-e3373789669f"/>
+				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="13" width="110" height="34" uuid="42328958-66da-4f6c-9ff6-88270c6b103c"/>
+				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="13" width="110" height="34" uuid="f68dc42b-76be-4cbf-80a4-c79e3146bf4a"/>
+				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="13" width="100" height="34" uuid="fd217e36-34ad-4abe-915f-f2e800dca66d"/>
+				<textFieldExpression><![CDATA[$F{WORKER_email_worker}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="13" width="85" height="20" uuid="6534216d-74c1-42fe-a41a-a9b3610e053f"/>
+				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
