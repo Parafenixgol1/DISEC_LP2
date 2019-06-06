@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f40af61d-32c3-43a7-8985-952284efa3f1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     ITEM_HISTORY_DEPARTURE.`id_item_history_departure` AS ITEM_HISTORY_DEPARTURE_id_item_history_departure,
+     ITEM_HISTORY_DEPARTURE.`departure_date` AS ITEM_HISTORY_DEPARTURE_departure_date,
+     ITEM_HISTORY_DEPARTURE.`quantity` AS ITEM_HISTORY_DEPARTURE_quantity,
+     ITEM.`code_item` AS ITEM_code_item,
+     ITEM.`name_item` AS ITEM_name_item,
+     ITEM.`price` AS ITEM_price,
+     BRAND.`name_brand` AS BRAND_name_brand,
+     WORK_ORDER.`code_work_order` AS WORK_ORDER_code_work_order,
+     WORK_ORDER.`description_work_order` AS WORK_ORDER_description_work_order,
+     WORK_ORDER.`start_date` AS WORK_ORDER_start_date,
+     WORK_ORDER.`final_date` AS WORK_ORDER_final_date,
+     CURRENCY.`name_currency` AS CURRENCY_name_currency
+FROM
+     `ITEM` ITEM INNER JOIN `ITEM_HISTORY_DEPARTURE` ITEM_HISTORY_DEPARTURE ON ITEM.`id_item` = ITEM_HISTORY_DEPARTURE.`id_item`
+     INNER JOIN `BRAND` BRAND ON ITEM.`id_brand` = BRAND.`id_brand`
+     INNER JOIN `CURRENCY` CURRENCY ON ITEM.`id_currency` = CURRENCY.`id_currency`
+     INNER JOIN `WORK_ORDER` WORK_ORDER ON ITEM_HISTORY_DEPARTURE.`id_work_order` = WORK_ORDER.`id_work_order`]]>
+	</queryString>
+	<field name="ITEM_HISTORY_DEPARTURE_id_item_history_departure" class="java.lang.Integer"/>
+	<field name="ITEM_HISTORY_DEPARTURE_departure_date" class="java.sql.Date"/>
+	<field name="ITEM_HISTORY_DEPARTURE_quantity" class="java.lang.Integer"/>
+	<field name="ITEM_code_item" class="java.lang.String"/>
+	<field name="ITEM_name_item" class="java.lang.String"/>
+	<field name="ITEM_price" class="java.lang.Double"/>
+	<field name="BRAND_name_brand" class="java.lang.String"/>
+	<field name="WORK_ORDER_code_work_order" class="java.lang.String"/>
+	<field name="WORK_ORDER_description_work_order" class="java.lang.String"/>
+	<field name="WORK_ORDER_start_date" class="java.sql.Date"/>
+	<field name="WORK_ORDER_final_date" class="java.sql.Date"/>
+	<field name="CURRENCY_name_currency" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="185" y="38" width="174" height="31" uuid="b86e42a6-7e3f-41b9-9a43-88974de51c64"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Salidas del Kardex]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="0" y="0" width="128" height="42" uuid="94a54755-11d1-45a2-be37-d2182f3fd23e"/>
+				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="4" width="65" height="20" uuid="9f87b21b-c26a-438b-a428-31c2023f3950"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="4" width="65" height="20" uuid="3c20c060-e14e-4128-bee9-f9683685f29b"/>
+				<text><![CDATA[Día de salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="4" width="54" height="20" uuid="84ac8d09-d7f2-4996-b91e-c57921542643"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="4" width="73" height="20" uuid="862db837-619a-4088-a26b-83b6d2ebc969"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="4" width="40" height="20" uuid="e4a9fdc3-067d-4917-8931-46247bc5fce2"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="4" width="56" height="20" uuid="86613193-6b0d-492b-bdfa-c4ce9e58db05"/>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="4" width="85" height="20" uuid="5ae93d7a-d91c-4b18-9cea-0449193a979f"/>
+				<text><![CDATA[Orden de trabajo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="4" width="66" height="20" uuid="5cc1d753-e658-49aa-a378-6dbe5fa6c9dd"/>
+				<text><![CDATA[Moneda]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="65" height="20" uuid="d1251e8b-e769-4956-b35f-5b56298f593e"/>
+				<textFieldExpression><![CDATA[$F{ITEM_code_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="4" width="65" height="20" uuid="33b32e3f-577e-418a-bf91-b1af9c93952c"/>
+				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_DEPARTURE_departure_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="4" width="54" height="20" uuid="2aa0b26b-cea6-4940-9e23-9591092a9b52"/>
+				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_DEPARTURE_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="4" width="73" height="20" uuid="280263fe-1944-4eb5-84a2-fa0415014bfd"/>
+				<textFieldExpression><![CDATA[$F{ITEM_name_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="4" width="40" height="20" uuid="a6403083-0bac-4c60-add0-50460c710ab2"/>
+				<textFieldExpression><![CDATA[$F{ITEM_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="5" width="56" height="20" uuid="604e3bdd-6b04-4f0f-8ed5-55c8607981a4"/>
+				<textFieldExpression><![CDATA[$F{BRAND_name_brand}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="4" width="85" height="20" uuid="f263bf46-f2a2-41ed-8d97-878e6bbe35c4"/>
+				<textFieldExpression><![CDATA[$F{WORK_ORDER_code_work_order}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="5" width="66" height="20" uuid="0c122961-ec0c-4d91-b6e0-1b04a50bf393"/>
+				<textFieldExpression><![CDATA[$F{CURRENCY_name_currency}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
