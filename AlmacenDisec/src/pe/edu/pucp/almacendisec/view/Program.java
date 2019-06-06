@@ -33,17 +33,13 @@ public class Program {
         try {
             DBManager dbManager = DBManager.getdbManager();
             Connection con = DriverManager.getConnection(dbManager.getUrl(), dbManager.getUser(),dbManager.getPassword());
-            // try{
-            //Class.forName("com.mysql.jdbc.Driver");
-            //Connection con= DriverManager.getConnection("jdbc:mysql://sallka.lab.inf.pucp.edu.pe:3306/inf282g5","inf282g5", "Cs0omP");
+           
             try {
-                //JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
-                // HashMap<String, Object> hm = new HashMap <String, Object>();
-            //String codigo =  JOptionPane.showInputDialog(null,"Ingrese un código de cliente:");
-            // String fechaInicial =  JOptionPane.showInputDialog(null,"Para la generación del reporte ingrese una fecha inicial:");
-            //String fechaFinal =  JOptionPane.showInputDialog(null,"Ingrese una fecha final:");
+                JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
+                 HashMap<String, Object> hm = new HashMap <String, Object>();
+            
                 //SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-                /*
+                
                 Date date1 = new GregorianCalendar(2019, 1, 1).getTime();
                 hm.put("fecha_inicial",date1);
                 Date date2 = new GregorianCalendar(2020, 4, 29).getTime();
@@ -54,8 +50,8 @@ public class Program {
             
                 JasperViewer visor = new JasperViewer(impresion);
             
-                visor.setVisible(true);*/
-                
+                visor.setVisible(true);
+                /*
                 JasperReport reporteCustomerReport = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport.jasper").getFile());
                 JasperReport reporteCustomerReport_IW = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport_InformationWorker.jasper").getFile());
                 JasperReport reporteCustomerReport_IW_IWO = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport_InformationWorker_InformationWorkOrder.jasper").getFile());     
@@ -87,7 +83,7 @@ public class Program {
 
                 JasperViewer visor = new JasperViewer(impresion);
 
-                visor.setVisible(true);
+                visor.setVisible(true);*/
             
             } catch (Exception ex) {
                  Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
