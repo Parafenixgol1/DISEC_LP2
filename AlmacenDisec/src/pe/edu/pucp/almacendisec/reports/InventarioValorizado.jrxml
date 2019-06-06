@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f8b5b0b-df41-4db4-bc6b-73dab2baeb99">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     CASE WHEN CURRENCY.`name_currency`='SOLES' THEN 'S/.'
+     WHEN CURRENCY.`name_currency`='DOLAR' THEN '$.' END AS 	      CURRENCY_name_currency,
+     ITEM.`code_item` AS ITEM_code_item,
+     ITEM.`name_item` AS ITEM_name_item,
+     ITEM.`price` AS ITEM_price,
+     STOCK.`actual_quantity` AS STOCK_actual_quantity
+FROM
+     `CURRENCY` CURRENCY INNER JOIN `ITEM` ITEM ON CURRENCY.`id_currency` = ITEM.`id_currency`
+     INNER JOIN `STOCK` STOCK ON ITEM.`id_item` = STOCK.`id_item`]]>
+	</queryString>
+	<field name="STOCK_actual_quantity" class="java.lang.Integer"/>
+	<field name="ITEM_name_item" class="java.lang.String"/>
+	<field name="ITEM_price" class="java.lang.Double"/>
+	<field name="ITEM_code_item" class="java.lang.String"/>
+	<field name="CURRENCY_name_currency" class="java.lang.String"/>
+	<variable name="Subtotal" class="java.lang.Long">
+		<variableExpression><![CDATA[$F{ITEM_price}*$F{STOCK_actual_quantity}]]></variableExpression>
+	</variable>
+	<variable name="Total" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{Subtotal}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="15" width="358" height="46" uuid="3553ce48-50ce-4fba-8c19-a48cc6d679c1"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de inventario Valorizado]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="53" height="20" uuid="16c9c118-e7bb-4b47-af46-cbb0427dbd95"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Código ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="2" width="100" height="20" uuid="4a793951-919f-41f6-85ef-b67ec73983b0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="2" width="100" height="20" uuid="03990588-40db-4f43-aee2-9e58d731fc63"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="0" width="100" height="20" uuid="3c9ea60f-4276-453c-ad46-e60d9465a608"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="505" height="2" uuid="707b68dc-bcef-4a4d-a6fd-2e4149c4166d"/>
+			</line>
+			<staticText>
+				<reportElement x="422" y="0" width="100" height="20" uuid="a38eea08-fed5-491b-8e96-614575410720"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="20" uuid="a25c1cf9-fd46-4481-8bca-89ed921b09bc"/>
+				<textFieldExpression><![CDATA[$F{ITEM_code_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="0" width="100" height="20" uuid="9532297a-c329-4d3f-a87d-57eb3810e957"/>
+				<textFieldExpression><![CDATA[$F{ITEM_name_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="100" height="20" uuid="9d938859-ddb9-49f8-9b63-9f0101fa8785"/>
+				<textFieldExpression><![CDATA[$F{ITEM_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="61" height="20" uuid="8fcb3521-4585-4b81-b3ae-75a5d8c1e2c1"/>
+				<textFieldExpression><![CDATA[$F{STOCK_actual_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="100" height="20" uuid="d4b664f5-e293-4a97-a242-bc8192030aa5"/>
+				<textFieldExpression><![CDATA[$V{Subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="0" width="15" height="20" uuid="853c17d9-0d55-4938-aa6a-42eb33105db4"/>
+				<textFieldExpression><![CDATA[$F{CURRENCY_name_currency}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="51" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="8" width="505" height="1" uuid="426c6e15-8b38-4bca-9a88-460ea89e33ad"/>
+			</line>
+			<staticText>
+				<reportElement x="70" y="7" width="326" height="34" uuid="7dfa576a-638a-4f69-8a22-69b21df61129"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Total de Inventario Valorizado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="417" y="14" width="100" height="20" uuid="c7d52af4-e4f2-4eed-8ad9-50c10432cb77"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="401" y="14" width="21" height="20" uuid="889ce1ee-e574-4874-8c12-494d296532e9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[S/.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
