@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bdb96ed-0237-4925-9e31-4fab854b0726">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="0aaf4cea-c07c-4a65-ad8d-e61346e4e9c8"/>
+	<subDataset name="dataset2" uuid="9358fcf4-9b35-4e96-bfbd-ca0671fff785"/>
+	<parameter name="CODIGO_WORK_ORDER" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call inf282g5.Search_Work_Order($P{CODIGO_WORK_ORDER});]]>
+	</queryString>
+	<field name="WORKER_name_worker" class="java.lang.String"/>
+	<field name="WORKER_last_name" class="java.lang.String"/>
+	<field name="WORKER_second_last_name" class="java.lang.String"/>
+	<field name="CUSTOMER_name_customer" class="java.lang.String"/>
+	<field name="WORK_ORDER_LINE_quantity_work_order_line" class="java.lang.Integer"/>
+	<field name="ITEM_name_item" class="java.lang.String"/>
+	<field name="ITEM_serie" class="java.lang.String"/>
+	<field name="ITEM_HISTORY_DEPARTURE_departure_date" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="128" height="44" uuid="78681125-50f1-42d1-869c-584200e59f9f"/>
+				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="211" y="28" width="140" height="37" uuid="8bb020ec-5a2e-4c50-9c47-38592b351c6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Guia de Salida]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="127" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d7cde171-5c34-419b-af71-53aa51abf379"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tecnico a cargo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="33" width="50" height="20" uuid="5aef2fa1-8379-4d2f-9220-f20ccb74d1e1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="100" height="20" uuid="a1c49491-247f-44c6-aee8-3ae690a1c789"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="33" width="100" height="20" uuid="578ebe52-b4d3-436d-97bc-23a4b1721452"/>
+				<textFieldExpression><![CDATA[$F{CUSTOMER_name_customer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="63" width="100" height="20" uuid="52e59a3c-c525-4d76-9b2b-4eb947289a3c"/>
+				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_DEPARTURE_departure_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="100" height="20" uuid="a94ba4ed-29e7-4220-b297-3fe3a593c4dd"/>
+				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="0" width="100" height="20" uuid="351cf29c-1175-4e93-a16d-47e32b9f4c58"/>
+				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="100" height="20" uuid="43a7ce0e-f451-4298-b56a-ad2e78bd2623"/>
+				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="95" width="100" height="20" uuid="ae400397-7116-4603-b012-92e7e71c25e7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="95" width="142" height="20" uuid="562fad89-b1ce-4bf9-8076-e1d85697239c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="95" width="100" height="20" uuid="52d4e2f3-24bc-47ca-8c75-d9e7da97af7d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="30a76a5e-22e4-4005-8c38-cafe0ce75d14"/>
+				<textFieldExpression><![CDATA[$F{ITEM_serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="142" height="20" uuid="676f65dd-5d7d-4d53-b5e7-4cee764f016e"/>
+				<textFieldExpression><![CDATA[$F{ITEM_name_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="100" height="20" uuid="ad3993ea-35b0-491b-89ec-ac707789c4dd"/>
+				<textFieldExpression><![CDATA[$F{WORK_ORDER_LINE_quantity_work_order_line}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be51fef4-8ad4-427a-ac33-312076be3143">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     BRAND.`name_brand` AS BRAND_name_brand,
+     ITEM.`code_item` AS ITEM_code_item,
+     ITEM.`name_item` AS ITEM_name_item,
+     ITEM.`price` AS ITEM_price,
+     SUPPLIER.`name_supplier` AS SUPPLIER_name_supplier,
+     CURRENCY.`id_currency` AS CURRENCY_id_currency,
+     CURRENCY.`name_currency` AS CURRENCY_name_currency,
+     ITEM_HISTORY_REGISTERED.`registered_date` AS ITEM_HISTORY_REGISTERED_registered_date,
+     ITEM_HISTORY_REGISTERED.`quantity` AS ITEM_HISTORY_REGISTERED_quantity
+FROM
+     `BRAND` BRAND INNER JOIN `ITEM` ITEM ON BRAND.`id_brand` = ITEM.`id_brand`
+     INNER JOIN `ITEMXSUPPLIER` ITEMXSUPPLIER ON ITEM.`id_item` = ITEMXSUPPLIER.`id_item`
+     INNER JOIN `CURRENCY` CURRENCY ON ITEM.`id_currency` = CURRENCY.`id_currency`
+     INNER JOIN `SUPPLIER` SUPPLIER ON ITEMXSUPPLIER.`id_supplier` = SUPPLIER.`id_supplier`
+     INNER JOIN `ITEM_HISTORY_REGISTERED` ITEM_HISTORY_REGISTERED ON ITEMXSUPPLIER.`id_item_supplier` = ITEM_HISTORY_REGISTERED.`id_item_supplier`]]>
+	</queryString>
+	<field name="BRAND_name_brand" class="java.lang.String"/>
+	<field name="ITEM_code_item" class="java.lang.String"/>
+	<field name="ITEM_name_item" class="java.lang.String"/>
+	<field name="ITEM_price" class="java.lang.Double"/>
+	<field name="SUPPLIER_name_supplier" class="java.lang.String"/>
+	<field name="CURRENCY_id_currency" class="java.lang.Integer"/>
+	<field name="CURRENCY_name_currency" class="java.lang.String"/>
+	<field name="ITEM_HISTORY_REGISTERED_registered_date" class="java.sql.Date"/>
+	<field name="ITEM_HISTORY_REGISTERED_quantity" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement positionType="Float" x="10" y="10" width="144" height="42" uuid="e50511b9-373f-490e-a603-b6c535d516a1"/>
+				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="195" y="48" width="190" height="31" uuid="6c20519f-3faf-486b-a59a-e4993293e959"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Entradas del Kardex]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="64" height="20" uuid="ad20a271-f419-47f9-a532-b2497a8e7aab"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="0" width="80" height="20" uuid="45b91053-70f4-48a1-8f61-664a0c0be2cc"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="0" width="58" height="20" uuid="0b419741-58ec-44f2-b98d-0f8d2836e5cf"/>
+				<text><![CDATA[Marca	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="100" height="20" uuid="fffe8cc4-7677-4ea7-bd88-ee100a95abfe"/>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="0" width="62" height="20" uuid="a42c619a-1a19-4087-ae8b-3bced6ca0b87"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="0" width="67" height="20" uuid="e16fc3f6-daae-4f11-897b-efdde0820455"/>
+				<text><![CDATA[Moneda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="3" width="69" height="20" uuid="71d161c3-eb07-46cc-82d6-37902204d08f"/>
+				<text><![CDATA[Día de entada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="49" height="20" uuid="20925dbc-200d-4c84-9457-aa92bbcbdd39"/>
+				<text><![CDATA[Cant.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="64" height="20" uuid="30a2caa2-1c2a-417f-8e31-0eb0fe4b77f0"/>
+				<textFieldExpression><![CDATA[$F{ITEM_code_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="0" width="80" height="20" uuid="03709e14-8af9-4bd5-8a85-3c3bba9d6eca"/>
+				<textFieldExpression><![CDATA[$F{ITEM_name_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="58" height="20" uuid="630ca947-676b-485a-b3fb-4e0069b43904"/>
+				<textFieldExpression><![CDATA[$F{BRAND_name_brand}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="100" height="20" uuid="fd844264-47a4-4026-8be8-8bbfd80b2951"/>
+				<textFieldExpression><![CDATA[$F{SUPPLIER_name_supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="0" width="62" height="20" uuid="dc053cc6-18db-44c6-ac47-5345b4cfaf6d"/>
+				<textFieldExpression><![CDATA[$F{ITEM_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="0" width="67" height="20" uuid="c7898302-bd94-4308-a7f4-7f2564abc9df"/>
+				<textFieldExpression><![CDATA[$F{CURRENCY_name_currency}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="2" width="69" height="20" uuid="2f256b51-3078-4f40-a890-f2661284b6ea"/>
+				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_REGISTERED_registered_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="3" width="49" height="20" uuid="6a4f7969-0590-43b5-b5a9-643b4f592097"/>
+				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_REGISTERED_quantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
