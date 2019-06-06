@@ -4,11 +4,11 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\DISEC\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\inf\\lp2\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["T:\\Temp\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
-	<parameter name="FECHAINICIO" class="java.lang.String"/>
-	<parameter name="FECHAFIN" class="java.lang.String"/>
+	<parameter name="FECHAINICIO" class="java.util.Date"/>
+	<parameter name="FECHAFIN" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[SELECT
      CUSTOMER.`code_customer` AS CUSTOMER_code_customer,
@@ -59,11 +59,19 @@ WHERE CUSTOMER.code_customer = $P{CODIGOCLIENTE}]]>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_name_customer}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="41" y="30" width="200" height="100" uuid="681ecc99-783a-42d7-bf9d-632eb83a5a8b"/>
-				<subreportParameter name="SUBREPORT_DIR"/>
-				<subreportParameter name="CODIGOCLIENTE"/>
-				<subreportParameter name="FECHAINICIO"/>
-				<subreportParameter name="FECHAFINAL"/>
+				<reportElement x="41" y="34" width="200" height="100" uuid="b88f1347-d9e2-4477-9b69-2200f041d12e"/>
+				<subreportParameter name="FECHAINICIO">
+					<subreportParameterExpression><![CDATA[$P{FECHAINICIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHAFINAL">
+					<subreportParameterExpression><![CDATA[$P{FECHAFIN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODIGOCLIENTE">
+					<subreportParameterExpression><![CDATA[$P{CODIGOCLIENTE}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker.jasper"]]></subreportExpression>
 			</subreport>

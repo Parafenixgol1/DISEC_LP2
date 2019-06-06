@@ -4,10 +4,10 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
-	<parameter name="FECHAINICIO" class="java.lang.String"/>
-	<parameter name="FECHAFINAL" class="java.lang.String"/>
+	<parameter name="FECHAINICIO" class="java.util.Date"/>
+	<parameter name="FECHAFINAL" class="java.util.Date"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Users\\USUARIO\\Desktop\\DISEC\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\inf\\lp2\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["T:\\Temp\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -15,20 +15,20 @@
      WORKER.`last_name` AS WORKER_last_name,
      WORKER.`second_last_name` AS WORKER_second_last_name,
      WORKER.`email_worker` AS WORKER_email_worker,
-     WORKER.`code_worker` AS WORKER_code_worker
-
+     WORKER.`code_worker` AS WORKER_code_worker,
+     CUSTOMER.`code_customer` AS CUSTOMER_code_customer
 FROM
-     `WORK_ORDER` WORK_ORDER, `WORKER` WORKER
-WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
-     `CUSTOMER` CUSTOMER 
-     WHERE CUSTOMER.`code_customer` = $P{CODIGOCLIENTE}) 
-     AND WORK_ORDER.`id_worker` = WORKER.`id_worker`]]>
+     `WORK_ORDER` WORK_ORDER INNER JOIN `WORKER` WORKER ON WORK_ORDER.`id_worker` = WORKER.`id_worker`
+     INNER JOIN `CUSTOMER` CUSTOMER ON WORK_ORDER.`id_customer` = CUSTOMER.`id_customer`
+WHERE
+     WORK_ORDER.`id_customer` = ( SELECT CUSTOMER.`id_customer` FROM `CUSTOMER` CUSTOMER WHERE CUSTOMER.`code_customer` = $P{CODIGOCLIENTE} )]]>
 	</queryString>
 	<field name="WORKER_name_worker" class="java.lang.String"/>
 	<field name="WORKER_last_name" class="java.lang.String"/>
 	<field name="WORKER_second_last_name" class="java.lang.String"/>
 	<field name="WORKER_email_worker" class="java.lang.String"/>
 	<field name="WORKER_code_worker" class="java.lang.String"/>
+	<field name="CUSTOMER_code_customer" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -69,14 +69,6 @@ WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
 	</columnHeader>
 	<detail>
 		<band height="189" splitType="Stretch">
-			<subreport>
-				<reportElement x="25" y="61" width="200" height="100" uuid="f55c08e4-b456-4220-b7ef-4dcf9601c03a"/>
-				<subreportParameter name="CODIGOCLIENTE"/>
-				<subreportParameter name="FECHAINICIO"/>
-				<subreportParameter name="FECHAFINAL"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker_InformationWorkOrder.jasper"]]></subreportExpression>
-			</subreport>
 			<textField>
 				<reportElement x="111" y="13" width="89" height="34" uuid="42e6a600-cff7-416f-896b-e3373789669f"/>
 				<textFieldExpression><![CDATA[$F{WORKER_name_worker}]]></textFieldExpression>
@@ -97,6 +89,20 @@ WHERE WORK_ORDER.`id_customer` = (SELECT CUSTOMER.`id_customer` FROM
 				<reportElement x="26" y="13" width="85" height="20" uuid="6534216d-74c1-42fe-a41a-a9b3610e053f"/>
 				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
 			</textField>
+			<subreport>
+				<reportElement x="15" y="64" width="516" height="100" uuid="9abf1fca-99a2-4fdb-aa5d-a0f9f23f281f"/>
+				<subreportParameter name="FECHAINICIO">
+					<subreportParameterExpression><![CDATA[$P{FECHAINICIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHAFINAL">
+					<subreportParameterExpression><![CDATA[$P{FECHAFINAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODIGOCLIENTE">
+					<subreportParameterExpression><![CDATA[$P{CODIGOCLIENTE} ]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker_InformationWorkOrder.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

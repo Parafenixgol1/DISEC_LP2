@@ -1,32 +1,34 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor.*/
+package pe.edu.pucp.almacendisec.config;
 
-//package pe.edu.pucp.almacendisec.config;
-//
-//import com.thoughtworks.xstream.XStream;
-//import com.thoughtworks.xstream.security.AnyTypePermission;
-//import java.io.FileNotFoundException;
-//import java.io.FileReader;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.AnyTypePermission;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
-//public class DBManager {
-  //  private static String url;
-  //  private static String user;
-   // private static String password;
-   // private static final DBManager dbManager = new DBManager();
+public class DBManager {
+    private static String url;
+    private static String user;
+    private static String password;
+    private static final DBManager dbManager = new DBManager();
 
     public DBManager() {
         XStream xstream = new XStream();
         xstream.addPermission(AnyTypePermission.ANY);
         FileReader reader;
         try{
-            reader = new FileReader("/src/pe/edu/pucp/almacendisec/config/config.xml");
+            reader = new FileReader("config.xml");
             ConnectionParameters connParam =
             (ConnectionParameters) xstream.fromXML(reader);
             url = connParam.getUrl();
             password = connParam.getPassword();
             user = connParam.getUser();
+            System.out.println(url);
+            System.out.println(password);
+            System.out.println(user);
             if(url.contains("mysql")){
                 Class.forName("com.mysql.cj.jdbc.Driver");
             }else{
@@ -67,4 +69,3 @@
     
     
 }
-*/
