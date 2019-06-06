@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bdb96ed-0237-4925-9e31-4fab854b0726">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.9487171000000014"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="65"/>
 	<subDataset name="dataset1" uuid="0aaf4cea-c07c-4a65-ad8d-e61346e4e9c8"/>
 	<subDataset name="dataset2" uuid="9358fcf4-9b35-4e96-bfbd-ca0671fff785"/>
 	<parameter name="CODIGO_WORK_ORDER" class="java.lang.String"/>
@@ -33,6 +33,9 @@
 				</textElement>
 				<text><![CDATA[Guia de Salida]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="76" width="547" height="1" forecolor="#000099" uuid="6b958211-1d9f-4097-9f35-21afb23736de"/>
+			</line>
 		</band>
 	</title>
 	<columnHeader>
@@ -99,6 +102,12 @@
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="83" width="547" height="1" forecolor="#000099" uuid="aaa4d9f2-03ee-469a-a0fb-efd789650dbf"/>
+			</line>
+			<line>
+				<reportElement x="0" y="115" width="547" height="1" forecolor="#000099" uuid="d125b45d-3d55-4f01-82f8-b24e321bf56d"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>

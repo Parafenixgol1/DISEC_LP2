@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f40af61d-32c3-43a7-8985-952284efa3f1">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.143588810000002"/>
+	<property name="ireport.x" value="382"/>
+	<property name="ireport.y" value="4"/>
 	<queryString>
 		<![CDATA[SELECT
      ITEM_HISTORY_DEPARTURE.`id_item_history_departure` AS ITEM_HISTORY_DEPARTURE_id_item_history_departure,
@@ -39,7 +39,7 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="69" splitType="Stretch">
+		<band height="78" splitType="Stretch">
 			<staticText>
 				<reportElement x="185" y="38" width="174" height="31" uuid="b86e42a6-7e3f-41b9-9a43-88974de51c64"/>
 				<textElement>
@@ -51,45 +51,75 @@ FROM
 				<reportElement positionType="Float" x="0" y="0" width="128" height="42" uuid="94a54755-11d1-45a2-be37-d2182f3fd23e"/>
 				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
 			</image>
+			<line>
+				<reportElement x="0" y="76" width="555" height="2" forecolor="#000099" uuid="58e80623-abf9-45e4-8326-05f5513b4087"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="28" splitType="Stretch">
+		<band height="47" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="4" width="65" height="20" uuid="9f87b21b-c26a-438b-a428-31c2023f3950"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="371" y="4" width="65" height="20" uuid="3c20c060-e14e-4128-bee9-f9683685f29b"/>
+				<reportElement x="371" y="4" width="65" height="33" uuid="3c20c060-e14e-4128-bee9-f9683685f29b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Día de salida]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="219" y="4" width="54" height="20" uuid="84ac8d09-d7f2-4996-b91e-c57921542643"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="71" y="4" width="73" height="20" uuid="862db837-619a-4088-a26b-83b6d2ebc969"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="446" y="4" width="40" height="20" uuid="e4a9fdc3-067d-4917-8931-46247bc5fce2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Precio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="153" y="4" width="56" height="20" uuid="86613193-6b0d-492b-bdfa-c4ce9e58db05"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Marca]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="4" width="85" height="20" uuid="5ae93d7a-d91c-4b18-9cea-0449193a979f"/>
+				<reportElement x="280" y="4" width="85" height="33" uuid="5ae93d7a-d91c-4b18-9cea-0449193a979f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Orden de trabajo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="489" y="4" width="66" height="20" uuid="5cc1d753-e658-49aa-a378-6dbe5fa6c9dd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Moneda]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="37" width="555" height="2" forecolor="#000099" uuid="d00e611a-33e6-4952-8299-197ffe96b872"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>

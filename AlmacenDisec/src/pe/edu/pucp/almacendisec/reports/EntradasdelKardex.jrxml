@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be51fef4-8ad4-427a-ac33-312076be3143">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="256"/>
+	<property name="ireport.y" value="32"/>
 	<queryString>
 		<![CDATA[SELECT
      BRAND.`name_brand` AS BRAND_name_brand,
@@ -46,44 +46,74 @@ FROM
 				</textElement>
 				<text><![CDATA[Entradas del Kardex]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="77" width="555" height="2" forecolor="#000099" uuid="c706dda8-f3c6-417a-afd9-9ebef430875a"/>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="23" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="64" height="20" uuid="ad20a271-f419-47f9-a532-b2497a8e7aab"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="66" y="0" width="80" height="20" uuid="45b91053-70f4-48a1-8f61-664a0c0be2cc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="152" y="0" width="58" height="20" uuid="0b419741-58ec-44f2-b98d-0f8d2836e5cf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Marca	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="0" width="100" height="20" uuid="fffe8cc4-7677-4ea7-bd88-ee100a95abfe"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Proveedor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="359" y="0" width="62" height="20" uuid="a42c619a-1a19-4087-ae8b-3bced6ca0b87"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Precio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="421" y="0" width="67" height="20" uuid="e16fc3f6-daae-4f11-897b-efdde0820455"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Moneda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="488" y="3" width="69" height="20" uuid="71d161c3-eb07-46cc-82d6-37902204d08f"/>
-				<text><![CDATA[Día de entada]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="310" y="0" width="49" height="20" uuid="20925dbc-200d-4c84-9457-aa92bbcbdd39"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Cant.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="34" width="555" height="2" forecolor="#000099" uuid="61bb511c-3257-45f1-9aea-2b92bfa8f9c5"/>
+			</line>
+			<staticText>
+				<reportElement x="488" y="0" width="57" height="31" uuid="71d161c3-eb07-46cc-82d6-37902204d08f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Día de entrada]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -118,7 +148,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_REGISTERED_registered_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="3" width="49" height="20" uuid="6a4f7969-0590-43b5-b5a9-643b4f592097"/>
+				<reportElement x="310" y="0" width="49" height="20" uuid="6a4f7969-0590-43b5-b5a9-643b4f592097"/>
 				<textFieldExpression><![CDATA[$F{ITEM_HISTORY_REGISTERED_quantity}]]></textFieldExpression>
 			</textField>
 		</band>

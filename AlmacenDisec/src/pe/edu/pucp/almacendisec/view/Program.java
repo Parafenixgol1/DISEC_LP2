@@ -35,7 +35,40 @@ public class Program {
             Connection con = DriverManager.getConnection(dbManager.getUrl(), dbManager.getUser(),dbManager.getPassword());
            
             try {
-                /*JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
+                /*
+                //ENTRADAS
+                JasperReport inventario = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/EntradasdelKardex.jasper").getFile());
+                JasperPrint impresion = JasperFillManager.fillReport(inventario, null, con);
+                JasperViewer visor = new JasperViewer(impresion);
+                visor.setVisible(true);*/
+                
+                
+                
+                
+                //KARDEX
+                JasperReport kardex = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/Kardex.jasper").getFile());
+                JasperPrint impresion = JasperFillManager.fillReport(kardex, null, con);
+                JasperViewer visor = new JasperViewer(impresion);
+                visor.setVisible(true);
+                
+                
+                
+               /* 
+                SALIDAS
+                
+                JasperReport salida = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/GuiadeSalida.jasper").getFile());
+                HashMap<String, Object> hm = new HashMap <String, Object>();
+                hm.put("CODIGO_WORK_ORDER","PROY0001"); 
+                JasperPrint impresion = JasperFillManager.fillReport(salida, hm, con);
+                JasperViewer visor = new JasperViewer(impresion);
+                visor.setVisible(true);*/
+               
+               
+               
+                /*
+                //USO DE HERRAMIENTAS
+                
+                JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
                  HashMap<String, Object> hm = new HashMap <String, Object>();
             
                 //SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -50,11 +83,12 @@ public class Program {
             
                 JasperViewer visor = new JasperViewer(impresion);
             
-                visor.setVisible(true);*/
-               
+                visor.setVisible(true);
+               */
                 
                 
                 /*
+                //INVENTARIO VALORIZADO
                 JasperReport inventario = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/InventarioValorizado.jasper").getFile());
                 JasperPrint impresion = JasperFillManager.fillReport(inventario, null, con);
                 JasperViewer visor = new JasperViewer(impresion);
@@ -62,6 +96,8 @@ public class Program {
                 */
                 
                 
+               /* 
+               // OITXCLIENTE
                 
                 JasperReport reporteCustomerReport = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport.jasper").getFile());
                 JasperReport reporteCustomerReport_IW = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport_InformationWorker.jasper").getFile());
@@ -88,13 +124,13 @@ public class Program {
                 //hm2.put("FECHAFINAL",fechaFinal);
                 //hm2.put("SUBREPORT_DIR",reporteCustomerReport_IW);
 
-                hm.put("SUBREPORT_DIR","D:\\Users\\alulab14\\Downloads\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\");
+                hm.put("SUBREPORT_DIR","D:\\LP2\\Trabajo\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\");
 
                 JasperPrint impresion = JasperFillManager.fillReport(reporteCustomerReport, hm, con);
 
                 JasperViewer visor = new JasperViewer(impresion);
 
-                visor.setVisible(true);
+                visor.setVisible(true);*/
             
             } catch (Exception ex) {
                  Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);

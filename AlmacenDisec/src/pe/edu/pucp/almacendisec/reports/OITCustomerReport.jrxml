@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="979c7875-b496-4a71-bd85-9ae2a4709800">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="3.797498335832416"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="98"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["T:\\Temp\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\LP2\\Trabajo\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
 	<parameter name="FECHAINICIO" class="java.util.Date"/>
@@ -23,43 +23,59 @@ WHERE CUSTOMER.code_customer = $P{CODIGOCLIENTE}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="49" splitType="Stretch">
+		<band height="89" splitType="Stretch">
 			<staticText>
-				<reportElement x="167" y="21" width="237" height="20" uuid="70319ac2-47b8-4a98-b362-491daa0760a9"/>
+				<reportElement x="128" y="51" width="369" height="28" uuid="70319ac2-47b8-4a98-b362-491daa0760a9"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE OITS POR CLIENTES]]></text>
 			</staticText>
+			<image>
+				<reportElement x="0" y="2" width="121" height="39" uuid="9b4d9391-22c6-4856-bf7b-ea1565bf3609"/>
+				<imageExpression><![CDATA["D:\\LP2\\Trabajo\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\logon.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="11" splitType="Stretch"/>
+		<band height="7" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="27" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<staticText>
-				<reportElement x="67" y="2" width="111" height="20" uuid="6805996e-98e5-4ae9-9d91-f9a22b22bf03"/>
+				<reportElement x="28" y="7" width="155" height="20" uuid="6805996e-98e5-4ae9-9d91-f9a22b22bf03"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
 				<text><![CDATA[CODIGO DE CLIENTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="256" y="2" width="112" height="20" uuid="578629e8-6ecf-4791-8048-58aa37532123"/>
+				<reportElement x="221" y="6" width="166" height="20" uuid="578629e8-6ecf-4791-8048-58aa37532123"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
 				<text><![CDATA[NOMBRE DE CLIENTE]]></text>
 			</staticText>
+			<line>
+				<reportElement x="16" y="6" width="523" height="1" forecolor="#000099" uuid="2ebc3279-8762-4682-90b2-6fc026f3c72a"/>
+			</line>
+			<line>
+				<reportElement x="16" y="26" width="523" height="1" forecolor="#000099" uuid="760c68b1-b092-44a0-ad54-9a661fe34035"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="147" splitType="Stretch">
 			<textField>
-				<reportElement x="67" y="6" width="100" height="20" uuid="7f75b597-4716-4ffc-a16f-9dcfb8dccb2f"/>
+				<reportElement x="28" y="6" width="100" height="20" uuid="7f75b597-4716-4ffc-a16f-9dcfb8dccb2f"/>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_code_customer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="256" y="6" width="100" height="20" uuid="af1936fd-928d-45c0-a5b3-cf7e19380505"/>
+				<reportElement x="221" y="6" width="100" height="20" uuid="af1936fd-928d-45c0-a5b3-cf7e19380505"/>
 				<textFieldExpression><![CDATA[$F{CUSTOMER_name_customer}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="41" y="34" width="200" height="100" uuid="b88f1347-d9e2-4477-9b69-2200f041d12e"/>
+				<reportElement x="0" y="47" width="200" height="100" uuid="b88f1347-d9e2-4477-9b69-2200f041d12e"/>
 				<subreportParameter name="FECHAINICIO">
 					<subreportParameterExpression><![CDATA[$P{FECHAINICIO}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -75,6 +91,9 @@ WHERE CUSTOMER.code_customer = $P{CODIGOCLIENTE}]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker.jasper"]]></subreportExpression>
 			</subreport>
+			<line>
+				<reportElement x="16" y="26" width="523" height="1" forecolor="#000099" uuid="8fb4b1b8-2126-4cd7-94d6-248753757b19"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

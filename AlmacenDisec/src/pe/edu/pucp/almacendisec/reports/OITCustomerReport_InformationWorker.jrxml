@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OITCustomerReport_InformationWorker" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fe381ed0-5014-4b1a-b62f-7a2981968ed9">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="3.797498335832429"/>
+	<property name="ireport.x" value="1135"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="CODIGOCLIENTE" class="java.lang.String"/>
 	<parameter name="FECHAINICIO" class="java.util.Date"/>
 	<parameter name="FECHAFINAL" class="java.util.Date"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["T:\\Temp\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\LP2\\Trabajo\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -33,38 +33,64 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="35" splitType="Stretch">
+		<band height="29" splitType="Stretch">
 			<staticText>
-				<reportElement x="27" y="9" width="199" height="20" uuid="5450167f-c277-4e96-bb33-7f070cad5086"/>
+				<reportElement x="27" y="9" width="294" height="20" uuid="5450167f-c277-4e96-bb33-7f070cad5086"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
 				<text><![CDATA[INFORMACIÓN DEL TÉCNICO A CARGO]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="9" splitType="Stretch"/>
+		<band height="4" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="33" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<staticText>
 				<reportElement x="111" y="7" width="100" height="20" uuid="b55a138b-93da-4937-b4b0-d53cc9de93ac"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
 				<text><![CDATA[NOMBRE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="211" y="7" width="110" height="20" uuid="63344aeb-1409-4f64-8851-ea8f258d7b0c"/>
-				<text><![CDATA[APELLIDO PATERNO]]></text>
+				<reportElement x="211" y="7" width="124" height="43" uuid="63344aeb-1409-4f64-8851-ea8f258d7b0c"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APELLIDO
+PATERNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="321" y="7" width="110" height="20" uuid="b5efb582-7922-457d-9066-7804386b1855"/>
-				<text><![CDATA[APELLIDO MATERNO]]></text>
+				<reportElement x="335" y="7" width="134" height="43" uuid="b5efb582-7922-457d-9066-7804386b1855"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APELLIDO
+MATERNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="431" y="7" width="100" height="20" uuid="5f81438b-f970-4955-b30e-1fb45e017811"/>
+				<reportElement x="422" y="7" width="100" height="20" uuid="5f81438b-f970-4955-b30e-1fb45e017811"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
 				<text><![CDATA[EMAIL]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="26" y="7" width="85" height="20" uuid="1b1329ad-140b-4185-9274-cc61075a2025"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
 				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
+			<line>
+				<reportElement x="15" y="0" width="523" height="1" forecolor="#000099" uuid="a5e39e98-235a-4b84-919c-d34c82b9c4ea"/>
+			</line>
+			<line>
+				<reportElement x="15" y="34" width="523" height="1" forecolor="#000099" uuid="eb01600e-2069-43e7-a402-5454e633c7c6"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -78,11 +104,11 @@ WHERE
 				<textFieldExpression><![CDATA[$F{WORKER_last_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="321" y="13" width="110" height="34" uuid="f68dc42b-76be-4cbf-80a4-c79e3146bf4a"/>
+				<reportElement x="335" y="13" width="110" height="34" uuid="f68dc42b-76be-4cbf-80a4-c79e3146bf4a"/>
 				<textFieldExpression><![CDATA[$F{WORKER_second_last_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="431" y="13" width="100" height="34" uuid="fd217e36-34ad-4abe-915f-f2e800dca66d"/>
+				<reportElement x="422" y="13" width="100" height="34" uuid="fd217e36-34ad-4abe-915f-f2e800dca66d"/>
 				<textFieldExpression><![CDATA[$F{WORKER_email_worker}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -90,7 +116,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{WORKER_code_worker}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="15" y="64" width="516" height="100" uuid="9abf1fca-99a2-4fdb-aa5d-a0f9f23f281f"/>
+				<reportElement x="0" y="62" width="178" height="100" uuid="9abf1fca-99a2-4fdb-aa5d-a0f9f23f281f"/>
 				<subreportParameter name="FECHAINICIO">
 					<subreportParameterExpression><![CDATA[$P{FECHAINICIO}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -98,7 +124,7 @@ WHERE
 					<subreportParameterExpression><![CDATA[$P{FECHAFINAL}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="CODIGOCLIENTE">
-					<subreportParameterExpression><![CDATA[$P{CODIGOCLIENTE} ]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{CODIGOCLIENTE}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OITCustomerReport_InformationWorker_InformationWorkOrder.jasper"]]></subreportExpression>
