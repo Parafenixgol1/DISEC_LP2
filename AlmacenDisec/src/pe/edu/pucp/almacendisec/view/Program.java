@@ -35,7 +35,7 @@ public class Program {
             Connection con = DriverManager.getConnection(dbManager.getUrl(), dbManager.getUser(),dbManager.getPassword());
            
             try {
-                JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
+                /*JasperReport reporteToolUse = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/ToolUse2.jasper").getFile());
                  HashMap<String, Object> hm = new HashMap <String, Object>();
             
                 //SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -50,8 +50,19 @@ public class Program {
             
                 JasperViewer visor = new JasperViewer(impresion);
             
-                visor.setVisible(true);
+                visor.setVisible(true);*/
+               
+                
+                
                 /*
+                JasperReport inventario = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/InventarioValorizado.jasper").getFile());
+                JasperPrint impresion = JasperFillManager.fillReport(inventario, null, con);
+                JasperViewer visor = new JasperViewer(impresion);
+                visor.setVisible(true);
+                */
+                
+                
+                
                 JasperReport reporteCustomerReport = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport.jasper").getFile());
                 JasperReport reporteCustomerReport_IW = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport_InformationWorker.jasper").getFile());
                 JasperReport reporteCustomerReport_IW_IWO = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/OITCustomerReport_InformationWorker_InformationWorkOrder.jasper").getFile());     
@@ -61,10 +72,10 @@ public class Program {
                 //String fechaInicial =  JOptionPane.showInputDialog(null,"Para la generación del reporte ingrese una fecha inicial:");
                 //String fechaFinal =  JOptionPane.showInputDialog(null,"Ingrese una fecha final:");
                 hm.put("CODIGOCLIENTE","CUST0001");
-                Date date1 = new GregorianCalendar(2000, 12, 12).getTime();
+                Date date1 = new GregorianCalendar(2000, 01, 01).getTime();
                 Date date2 = new GregorianCalendar(2019, 12, 12).getTime();
                 hm.put("FECHAINICIO",date1);
-                hm.put("FECHAFINAL", date2);
+                hm.put("FECHAFIN", date2);
 
                 //HashMap hm3 = new HashMap();
                 //hm3.put("CODIGOCLIENTE",codigo);
@@ -77,13 +88,13 @@ public class Program {
                 //hm2.put("FECHAFINAL",fechaFinal);
                 //hm2.put("SUBREPORT_DIR",reporteCustomerReport_IW);
 
-                hm.put("SUBREPORT_DIR",reporteCustomerReport_IW);
+                hm.put("SUBREPORT_DIR","D:\\Users\\alulab14\\Downloads\\DISEC_LP2\\AlmacenDisec\\src\\pe\\edu\\pucp\\almacendisec\\reports\\");
 
                 JasperPrint impresion = JasperFillManager.fillReport(reporteCustomerReport, hm, con);
 
                 JasperViewer visor = new JasperViewer(impresion);
 
-                visor.setVisible(true);*/
+                visor.setVisible(true);
             
             } catch (Exception ex) {
                  Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
