@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="487eaa0a-673e-469e-b0ea-73a1a4481d60">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[call inf282g5.QUERY_CRITIC_STOCK();]]>
+	</queryString>
+	<field name="serie" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name_item" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="actual_quantity" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="min_quantity" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="172" y="31" width="256" height="32" uuid="1a0c8b82-1b14-4aa6-9799-e8fa2e04be2a"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Stock Crítico]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="129" height="41" uuid="47b30291-1d38-4988-9d7f-ca9ace825327"/>
+				<imageExpression><![CDATA["logon.jpg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" forecolor="#000099" uuid="d785c223-d0c7-4ced-8d62-41d56d9fcf0f"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="85" height="20" uuid="f759bf60-c99a-4f2e-971f-0849f97bc610"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="1" width="136" height="20" uuid="937ca41f-c05c-4ea2-b22b-31246458a6cb"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="0" width="96" height="20" uuid="42cd10b7-ae79-4a75-ae9d-6fcb0f19afa8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD MINIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="1" width="79" height="20" uuid="62236648-ce52-4a32-8f50-e8890ebd3290"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STOCK ACTUAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" forecolor="#000099" uuid="43d5c7a0-6a47-4fe4-aa56-ff3b96c5ca89"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="85" height="20" uuid="7a094824-1a3b-4368-a2e3-48c0ac5d8556"/>
+				<textFieldExpression><![CDATA[$F{serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="136" height="20" uuid="e34f8fa7-ff4d-4561-a525-cd0cefc27fac"/>
+				<textFieldExpression><![CDATA[$F{name_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="0" width="79" height="20" uuid="c1e397f7-4590-4e11-b1e0-f9e910ea2dc6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{actual_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="96" height="20" uuid="6534e349-3846-4fa6-966c-b2b4b5c34f9c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{min_quantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

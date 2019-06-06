@@ -42,15 +42,18 @@ public class Program {
                 JasperViewer visor = new JasperViewer(impresion);
                 visor.setVisible(true);*/
                 
+                JasperReport critico = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/StockCritico.jasper").getFile());
+                JasperPrint impresion = JasperFillManager.fillReport(critico, null, con);
+                JasperViewer visor = new JasperViewer(impresion);
+                visor.setVisible(true);
                 
-                
-                
+                /*
                 //KARDEX
                 JasperReport kardex = (JasperReport) JRLoader.loadObjectFromFile(Program.class.getResource("/pe/edu/pucp/almacendisec/reports/Kardex.jasper").getFile());
                 JasperPrint impresion = JasperFillManager.fillReport(kardex, null, con);
                 JasperViewer visor = new JasperViewer(impresion);
                 visor.setVisible(true);
-                
+                */
                 
                 
                /* 
